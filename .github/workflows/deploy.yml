@@ -1,0 +1,40 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node (via corepack)
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
+
+      - name: Install dependencies
+        run: pnpm install
+        working-directory: leticia-marra-beauty-site-completo/leticia-marra-beauty-site
+
+      - name: Build site
+        run: pnpm build
+        working-directory: leticia-marra-beauty-site-completo/leticia-marra-beauty-site
+        env:
+          VITE_BASE: '/leticiamarra_beauty/'
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./leticiamarra_beauty-site-completo/leticia-marra-beauty-site/dist/public
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1

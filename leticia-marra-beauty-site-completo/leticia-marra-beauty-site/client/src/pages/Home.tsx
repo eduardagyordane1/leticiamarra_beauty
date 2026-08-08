@@ -20,6 +20,7 @@ interface Service {
 }
 
 interface CarouselSlide {
+  ctaHref: string;
   id: string;
   title: string;
   description: string;
