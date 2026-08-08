@@ -72,7 +72,7 @@ const carouselSlides: CarouselSlide[] = [
     id: "slide1",
     title: "Instituto Marra",
     description: "Aqui nós acreditamos que beleza vai muito além de aparência!",
-    videoUrl: "/workspaces/leticiamarra_beauty/leticia-marra-beauty-site-completo/leticia-marra-beauty-site/client/src/img/snapinsta-1786110585047.mp4",
+    videoUrl: featuretteVideo2,
     cta: "Agende seu horário",
     ctaHref: "https://wa.me/5534996886145",
   },
@@ -80,15 +80,17 @@ const carouselSlides: CarouselSlide[] = [
     id: "slide2",
     title: "Cuidados Especializados para te atender",
     description: "Nossos cuidados são pensados em cada detalhe para que além de tudo você se sinta bem consigo mesma",
-    videoUrl: "/workspaces/leticiamarra_beauty/leticia-marra-beauty-site-completo/leticia-marra-beauty-site/client/src/img/snapinsta-1786110507352.mp4",
+    videoUrl: featuretteVideo3,
     cta: "Conheça mais",
+    ctaHref: "#servicos",
   },
   {
     id: "slide3",
     title: "Nossa prioridade é você!",
     description: "Atendimento personalizado a cada detalhe para que você se sinta bem",
-    videoUrl: "/workspaces/leticiamarra_beauty/leticia-marra-beauty-site-completo/leticia-marra-beauty-site/client/src/img/snapinsta-1786110555215.mp4",
+    videoUrl: featuretteVideo1,
     cta: "Fale conosco",
+    ctaHref: "https://wa.me/5534996886145",
   },
 ];
 
