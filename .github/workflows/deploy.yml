@@ -1,0 +1,39 @@
+name: Publicar no GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar codigo
+        uses: actions/checkout@v4
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Instalar pnpm
+        run: npm install --global pnpm@10.4.1
+      - name: Instalar dependencias
+        run: pnpm install --frozen-lockfile
+        working-directory: leticiamarra-github-pages/leticiamarra_beauty-main
+      - name: Verificar TypeScript
+        run: pnpm check
+        working-directory: leticiamarra-github-pages/leticiamarra_beauty-main
+      - name: Gerar site estatico
+        run: pnpm build:pages
+        working-directory: leticiamarra-github-pages/leticiamarra_beauty-main
+        env:
+          VITE_BASE: /leticiamarra_beauty/
+      - name: Publicar na branch gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: leticiamarra-github-pages/leticiamarra_beauty-main/dist/public
